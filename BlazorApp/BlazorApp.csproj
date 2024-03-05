@@ -11,4 +11,20 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.2" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- Simulate installing a NuGet package that ships a library initializer in the package -->
+    <StaticWebAsset Include="MyLibraryInitializer.js">
+      <SourceType>Package</SourceType>
+      <SourceId>MyPackage</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)</ContentRoot>
+      <BasePath>_content/MyPackage</BasePath>
+      <RelativePath>%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <AssetTraitName>JSModule</AssetTraitName>
+      <AssetTraitValue>JSLibraryModule</AssetTraitValue>
+    </StaticWebAsset>
+  </ItemGroup>
+
 </Project>
